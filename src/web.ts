@@ -1,3 +1,4 @@
+require("dotenv").config();
 import "reflect-metadata";
 import { createExpressServer } from "routing-controllers";
 import { CommandsController } from "./web/CommandsController";
@@ -9,6 +10,6 @@ const app = createExpressServer({
   controllers: [CommandsController, MessagesController],
 });
 
-app.listen(3000);
+app.listen(port);
 
 console.log(`Express listening on port ${port}`);

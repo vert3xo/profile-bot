@@ -18,6 +18,7 @@ resource "heroku_app" "default" {
     buildpacks = ["heroku/nodejs"]
     config_vars = {
         DISCORD_TOKEN = var.discord_token
+        PORT = var.port
     }
 }
 
@@ -50,4 +51,8 @@ variable "heroku_credentials" {
 
 variable "discord_token" {
     type = string
+}
+
+variable "port" {
+    type = number
 }
