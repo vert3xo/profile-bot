@@ -20,7 +20,7 @@ resource "heroku_build" "default" {
     buildpacks = ["heroku/nodejs"]
 
     source {
-      url = ""
+      url = "https://github.com/vert3xo/profile-bot/archive/refs/tags/1.0.0.tar.gz"
       version = "1.0.0"
     }
 }
