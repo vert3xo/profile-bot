@@ -7,17 +7,22 @@ terraform {
   }
 }
 
+provider "heroku" {
+    email = var.heroku_credentials.email
+    api_key = var.heroku_credentials.api_key
+}
+
 resource "heroku_app" "default" {
-    name = "profile-bot"
+    name = "discord-profile-bot"
     region = "eu"
+    buildpacks = ["heroku/nodejs"]
     config_vars = {
-        DISCORD_TOKEN = var.DISCORD_TOKEN
+        DISCORD_TOKEN = var.discord_token
     }
 }
 
 resource "heroku_build" "default" {
     app = heroku_app.default.id
-    buildpacks = ["heroku/nodejs"]
 
     source {
       url = "https://github.com/vert3xo/profile-bot/archive/refs/tags/1.0.0.tar.gz"
@@ -35,6 +40,14 @@ resource "heroku_formation" "default" {
     ]
 }
 
-variable "DISCORD_TOKEN" {
+output "default_app_url" {
+    value = "https://${heroku_app.default.name}.herokuapp.com"
+}
+
+variable "heroku_credentials" {
+    type = map(string)
+}
+
+variable "discord_token" {
     type = string
 }
