@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node build/index.js",
     "dev": "nodemon src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "heroku-postbuild": "yarn build"
   },
   "repository": "github.com/vert3xo/profile-bot.git",
   "author": "Vert3xo",
