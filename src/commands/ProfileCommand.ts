@@ -18,9 +18,7 @@ export class ProfileCommand extends Command {
         new MessageEmbed()
           .setColor("RANDOM")
           .setTitle("Profile Picture Selector")
-          .setDescription(
-            "Answer a few questions to get a new profile picture"
-          ),
+          .setDescription("Select a template for your new profile picture"),
       ],
       components: [
         new MessageActionRow().addComponents(
