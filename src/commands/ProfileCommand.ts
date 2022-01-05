@@ -13,6 +13,7 @@ export class ProfileCommand extends Command {
     interaction: CommandInteraction
   ): Promise<void> {
     interaction.reply({
+      ephemeral: true,
       embeds: [
         new MessageEmbed()
           .setColor("RANDOM")
@@ -24,7 +25,7 @@ export class ProfileCommand extends Command {
       components: [
         new MessageActionRow().addComponents(
           new MessageSelectMenu()
-            .setCustomId("templateselect")
+            .setCustomId("templateselectmenu")
             .setPlaceholder("Select a template")
             .addOptions([
               {

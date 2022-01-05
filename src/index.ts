@@ -5,9 +5,9 @@ import { Listener } from "./listeners/Listener";
 import { Command } from "./commands/Command";
 import { ProfileCommand } from "./commands/ProfileCommand";
 import { Button } from "./buttons/Button";
-import { ColorButton } from "./buttons/ColorButton";
 import { Menu } from "./menus/Menu";
 import { TemplateMenu } from "./menus/TemplateMenu";
+import { ColorSelectMenu } from "./menus/ColorSelectMenu";
 import { ReadyListener } from "./listeners/ReadyListener";
 import { InteractionCreateListener } from "./listeners/InteractionCreateListener";
 
@@ -47,6 +47,7 @@ export class ProfileBot {
           },
         ],
       },
+      retryLimit: 3,
     });
 
     this.commands = new Map<string, Command>();
@@ -55,20 +56,11 @@ export class ProfileBot {
 
     this.registerListener(new ReadyListener());
     this.registerListener(new InteractionCreateListener());
-
-    // Buttons for each profile picture template
-    this.registerButton(new ColorButton("dog1_green"));
-    this.registerButton(new ColorButton("dog1_red"));
-    this.registerButton(new ColorButton("dog1_yellow"));
-    this.registerButton(new ColorButton("dog1_blue"));
-    this.registerButton(new ColorButton("dog2_green"));
-    this.registerButton(new ColorButton("dog2_red"));
-    this.registerButton(new ColorButton("dog2_yellow"));
-    this.registerButton(new ColorButton("dog2_blue"));
+    this.registerMenu(new ColorSelectMenu());
 
     this.registerCommand(new ProfileCommand("profile"));
 
-    this.registerMenu(new TemplateMenu("templateselect"));
+    this.registerMenu(new TemplateMenu());
   }
 
   async start(): Promise<void> {
