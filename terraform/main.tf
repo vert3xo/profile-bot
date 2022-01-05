@@ -11,7 +11,7 @@ resource "heroku_app" "default" {
     name = "profile-bot"
     region = "eu"
     config_vars = {
-        DISCORD_TOKEN = DISCORD_TOKEN
+        DISCORD_TOKEN = var.DISCORD_TOKEN
     }
 }
 
