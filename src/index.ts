@@ -1,5 +1,5 @@
+require("dotenv").config();
 import "./web";
-import config from "./config.json";
 import { Client, Intents } from "discord.js";
 import { Listener } from "./listeners/Listener";
 import { Command } from "./commands/Command";
@@ -64,7 +64,7 @@ export class ProfileBot {
   }
 
   async start(): Promise<void> {
-    await this.client.login(config.discordToken);
+    await this.client.login(process.env.DISCORD_TOKEN);
   }
 
   registerListener(listener: Listener) {

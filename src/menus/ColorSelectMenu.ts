@@ -15,13 +15,14 @@ export class ColorSelectMenu extends Menu {
 
     interaction.user.send({
       content: "Here's the image you requested",
-      files: [path.resolve(path.join(__dirname, "../images", `${value}.png`))],
+      files: [
+        path.resolve(path.join(__dirname, "../../images", `${value}.png`)),
+      ],
     });
 
     return interaction.reply({
       ephemeral: true,
       content: "The bot will DM you your image shortly!",
-      //   files: [path.resolve(path.join(__dirname, "../images", `${value}.png`))],
     });
   }
 }
