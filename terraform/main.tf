@@ -20,7 +20,8 @@ resource "heroku_app" "default" {
         PORT = var.port
     }
     sensitive_config_vars = {
-      "DISCORD_TOKEN" = var.discord_token
+      DISCORD_TOKEN = var.discord_token
+      JWT_SECRET = var.JWT_SECRET
     }
 }
 
@@ -53,6 +54,10 @@ variable "heroku_credentials" {
 
 variable "discord_token" {
     type = string
+}
+
+variable "jwt_secret" {
+  type = string
 }
 
 variable "port" {

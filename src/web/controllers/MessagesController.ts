@@ -1,58 +1,16 @@
 import { TextChannel } from "discord.js";
-import {
-  Body,
-  Get,
-  JsonController,
-  Post,
-  QueryParam,
-} from "routing-controllers";
-import { Inject, Service } from "typedi";
+import { Body, JsonController, Post, UseBefore } from "routing-controllers";
+import { Service } from "typedi";
+import { IsAuthenticated } from "../middleware/IsAuthenticated";
 import { ProfileBot } from "../../ProfileBot";
+import type { MessageBody } from "../types/MessageType";
+import type { ResponseType } from "../types/ResponseType";
 
-type ResponseType = {
-  success: boolean;
-  message?: string;
-};
-
-type MessageBody = {
-  serverId: string;
-  channelId: string;
-  message: string;
-};
-
+@UseBefore(IsAuthenticated)
 @JsonController("/messages")
 @Service()
 export class MessagesController {
   constructor(private readonly client: ProfileBot) {}
-
-  @Get("/send")
-  async getSend(
-    @QueryParam("server_id") serverId: string,
-    @QueryParam("channel_id") channelId: string,
-    @QueryParam("message") message: string
-  ) {
-    const guilds = await this.client.client.guilds.fetch();
-    if (!guilds.has(serverId)) {
-      return "Server not found";
-    }
-
-    const guild = await guilds.get(serverId).fetch();
-    const channels = await guild.channels.fetch();
-
-    if (!channels.has(channelId)) {
-      return "Channel not found";
-    }
-
-    const channel = guild.channels.cache.get(channelId);
-
-    if (channel.type !== "GUILD_TEXT") {
-      return "Not a text channel";
-    }
-
-    await (channel as TextChannel).send(message);
-
-    return "Sent";
-  }
 
   @Post("/send")
   async postSend(@Body() body: MessageBody): Promise<ResponseType> {
