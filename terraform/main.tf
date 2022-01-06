@@ -17,8 +17,10 @@ resource "heroku_app" "default" {
     region = "eu"
     buildpacks = ["heroku/nodejs"]
     config_vars = {
-        DISCORD_TOKEN = var.discord_token
         PORT = var.port
+    }
+    sensitive_config_vars = {
+      "DISCORD_TOKEN" = var.DISCORD_TOKEN
     }
 }
 
