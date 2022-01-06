@@ -1,4 +1,4 @@
-import { ProfileBot } from "..";
+import { ProfileBot } from "../ProfileBot";
 import { Button } from "../buttons/Button";
 import { Command } from "../commands/Command";
 import { Menu } from "../menus/Menu";

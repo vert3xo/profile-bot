@@ -1,4 +1,4 @@
-import { ProfileBot } from "..";
+import { ProfileBot } from "../ProfileBot";
 import { Listener } from "./Listener";
 
 export class ReadyListener extends Listener {
