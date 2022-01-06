@@ -1,9 +1,9 @@
 import { Controller, Get } from "routing-controllers";
 
 @Controller("/commands")
-export class CommandsController {
+export class IndexController {
   @Get("/")
   index() {
-    return "Hello World";
+    return "The bot has awoken";
   }
 }
