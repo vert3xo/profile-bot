@@ -20,7 +20,7 @@ resource "heroku_app" "default" {
         PORT = var.port
     }
     sensitive_config_vars = {
-      "DISCORD_TOKEN" = var.DISCORD_TOKEN
+      "DISCORD_TOKEN" = var.discord_token
     }
 }
 
