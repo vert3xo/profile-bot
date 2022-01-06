@@ -21,7 +21,7 @@ resource "heroku_app" "default" {
     }
     sensitive_config_vars = {
       DISCORD_TOKEN = var.discord_token
-      JWT_SECRET = var.JWT_SECRET
+      JWT_SECRET = var.jwt_secret
     }
 }
 
