@@ -28,7 +28,7 @@ resource "heroku_build" "default" {
     app = heroku_app.default.id
 
     source {
-      url = "https://github.com/vert3xo/profile-bot/archive/refs/tags/1.0.0.tar.gz"
+      url = "https://github.com/vert3xo/profile-bot/archive/refs/tags/1.1.0.tar.gz"
       version = "1.0.0"
     }
 }
