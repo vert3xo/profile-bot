@@ -1,3 +1,11 @@
+/**
+ * This file is not part of the bot functionality
+ * This is a utility file which you can run to register commands
+ * Configuration file name `config.json` is required
+ * An example configuration can be found in `config.example.json`
+ * https://discord.com/developers/docs/interactions/application-commands#registering-a-command
+ */
+
 import fetch from "node-fetch";
 import config from "./config.json";
 
