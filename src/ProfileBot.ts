@@ -8,9 +8,10 @@ import { Button } from "./buttons/Button";
 import { Menu } from "./menus/Menu";
 import { TemplateMenu } from "./menus/TemplateMenu";
 import { ColorSelectMenu } from "./menus/ColorSelectMenu";
+import { SusMessageListener } from "./listeners/SusMessageListener";
 import { ReadyListener } from "./listeners/ReadyListener";
 import { InteractionCreateListener } from "./listeners/InteractionCreateListener";
-import { Container, Service } from "typedi";
+import { Service } from "typedi";
 
 @Service()
 export class ProfileBot {
@@ -56,6 +57,7 @@ export class ProfileBot {
     this.buttons = new Map<string, Button>();
     this.menus = new Map<string, Menu>();
 
+    this.registerListener(new SusMessageListener());
     this.registerListener(new ReadyListener());
     this.registerListener(new InteractionCreateListener());
     this.registerMenu(new ColorSelectMenu());
